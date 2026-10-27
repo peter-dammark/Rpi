@@ -8,7 +8,7 @@ Enemy::Enemy(GameState *game): game(game) {};
 void Enemy::enemyThread() {
     while (game->running) {
         // Fixed speed
-        std::this_thread::sleep_for(std::chrono::milliseconds(25));
+        std::this_thread::sleep_for(std::chrono::milliseconds(50));
 
         // Spawn enemies at leftmost column, random row
         if (rand() % 100 == 0) {

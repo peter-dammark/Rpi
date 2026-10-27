@@ -25,7 +25,7 @@ void Ship::shipThread() {
     while (game->running) 
     {
         // Fixed speed
-        std::this_thread::sleep_for(std::chrono::milliseconds(50));
+        std::this_thread::sleep_for(std::chrono::milliseconds(25));
 
         // Ensure display is not updated in the middle
         // of updating position

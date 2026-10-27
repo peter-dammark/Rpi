@@ -7,16 +7,13 @@ GameController::GameController(GameState *game): game(game) {};
 
 void GameController::gameControllerThread() {
     while (game->running) {
-        // Wait a fixed time
-        //std::this_thread::sleep_for(std::chrono::milliseconds(125));
-
         std::unique_lock<std::mutex> lock(game->gameMutex);
         
-        // Wait for enemy or bullet for max 125 ms
-        game->cv.wait_for(lock, std::chrono::milliseconds(25));
+        // Wait for enemy or bullet for max 25 ms
+        game->cv.wait_for(lock, std::chrono::milliseconds(125));
 
-        // Wait for enemy or bullet
-        //game->cv.wait(lock);
+        // tjekker om spillet stadig kører, hvis ikke, brydes løkken
+        if (!game->running) break;
 
         // Collision detection
         for (auto b = game->bullets.begin(); b != game->bullets.end();) {
