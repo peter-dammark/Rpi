@@ -128,7 +128,7 @@ void Buttons::buttonsThread()
             game->shootButton_cv.notify_one();
         }
 
-        // Kør tråden med et fast tidsinterval på 25 ms
+        // Kør tråden med et fast tidsinterval på 50 ms
         std::this_thread::sleep_for(std::chrono::milliseconds(50));
     }
 }
