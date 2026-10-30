@@ -33,11 +33,6 @@ void Bullet::bulletUpdateThread() {
         // Running at fixed speed (bullet movement)
         std::this_thread::sleep_for(std::chrono::milliseconds(25));
         {
-            /* TODO: Update bullets (move right)
-             * 1) Is locking required?
-             * 2) For each game->bulles, move them 1 px horisontally
-             * 3) Is sync required?
-             */  
             std::lock_guard<std::mutex> lock(game->gameMutex);
 
             for (auto &b : game->bullets) {
